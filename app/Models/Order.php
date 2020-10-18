@@ -6,12 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-  protected $table = '';
+  protected $table = 'orders';
 
   protected $fillable = [];
 
-  public function getRouteKeyName()
+  public function user() 
   {
-    return '';
+    return $this->belongsTo(User::class)->withDefault();   // an order belongs to a user
+  }
+
+  public function orderlines() 
+  {
+    return $this->hasMany(Orderline::class);   // an order has many orderlines
   }
 }
