@@ -8,13 +8,13 @@
     {{-- @include('shared.icons') --}}
   </head>
   <body>
-    {{-- @include('shared.navigation') --}}
+    @include('shared.navigation')
 
     <main class="container mt-3">
       @yield('main', 'Página en construcción...')
     </main>
 
-    {{-- @include('shared.footer') --}}
+    @include('shared.footer')
 
     <script src="{{ mix('js/app.js') }}"></script>
   </body>

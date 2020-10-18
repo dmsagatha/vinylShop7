@@ -3,11 +3,11 @@
 @section('main')
   <h1>Records</h1>
 
-  <ul>
+  {{-- <ul>
     @foreach ($records as $record)
       <li>{{ $record }}</li>
     @endforeach
-  </ul>
+  </ul> --}}
   
   <ul>
     @foreach ($records as $record)

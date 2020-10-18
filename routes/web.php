@@ -40,7 +40,7 @@ Route::view('/', 'home');
 }); */
 
 // New version with prefix and group
-Route::prefix('admin')->group(function () {
+/* Route::prefix('admin')->group(function () {
   Route::redirect('/', '/admin/records');
   
   Route::get('records', function (){
@@ -53,4 +53,8 @@ Route::prefix('admin')->group(function () {
         'records' => $records
     ]);
   });
+}); */
+Route::prefix('admin')->group(function () {
+  Route::redirect('/', 'records');
+  Route::get('records', 'Admin\RecordController@index');
 });
