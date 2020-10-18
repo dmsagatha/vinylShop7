@@ -37269,10 +37269,19 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vinylShop__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vinylShop */ "./resources/js/vinylShop.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Make 'VinylShop' accessible inside the HTML pages
+
+
+
+window.VinylShop = _vinylShop__WEBPACK_IMPORTED_MODULE_0__["default"]; // Run the hello() function
+
+_vinylShop__WEBPACK_IMPORTED_MODULE_0__["default"].hello();
 
 /***/ }),
 
@@ -37318,6 +37327,30 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/vinylShop.js":
+/*!***********************************!*\
+  !*** ./resources/js/vinylShop.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var VinylShop = function () {
+  function hello() {
+    console.log('El JavaScript de la Tienda de Vinilos funciona! 🙂');
+  }
+
+  return {
+    hello: hello // publicly available as: VinylShop.hello()
+
+  };
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (VinylShop);
 
 /***/ }),
 
