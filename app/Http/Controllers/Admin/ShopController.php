@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Json;
+use App\Models\Genre;
 use App\Models\Record;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Genre;
-use Json;
+use Illuminate\Support\Facades\Http;
 
 class ShopController extends Controller
 {
@@ -65,6 +66,35 @@ class ShopController extends Controller
   // Detail Page: http://vinyl_shop.test/shop/{id} or http://localhost:3000/shop/{id}
   public function show($id)
   {
-    return view('admin.shop.show', ['id' => $id]);  // Send $id to the view
+    $record = Record::with('genre')->findOrFail($id);
+    //dd($record);
+    // Path real ára la imagen de la portada
+    $record->cover = $record->cover ?? "https://coverartarchive.org/release/$record->title_mbid/front-250.jpg";
+    // Combinar artist + title
+    $record->title = $record->artist . ' - ' . $record->title;
+    // Links to MusicBrainz API (used by jQuery)
+    // https://wiki.musicbrainz.org/Development/JSON_Web_Service
+    $record->recordUrl = 'https://musicbrainz.org/ws/2/release/' . $record->title_mbid . '?inc=recordings+url-rels&fmt=json';
+    // Si stock> 0: el botón es verde, de lo contrario el botón es rojo
+    $record->btnClass = $record->stock > 0 ? 'btn-outline-success' : 'btn-outline-danger';
+    // No puede sobrescribir el atributo genre (object) con una cadena, por lo que creamos un nuevo atributo
+    $record->genreName = $record->genre->name;
+    // Remover todos los campos que no esta usando en la vista
+    unset($record->genre_id, $record->artist, $record->created_at, $record->updated_at, $record->title_mbid, $record->genre);
+
+    // Obtener información del Record y convertirla en Json
+    $response = Http::get($record->recordUrl)->json();
+    $tracks   = $response['media'][0]['tracks'];
+    $tracks = collect($tracks)
+        ->transform(function ($item, $key) {
+            $item['length'] = gmdate('i:s', $item['length']/1000);  // PHP works with sec, not ms!!!
+            unset($item['id'], $item['recording'], $item['number']);
+            return $item;
+        });
+
+    $result = compact('tracks', 'record');
+    Json::dump($result);          // http://localhost:3000/shop/1?json
+
+    return view('admin.shop.show', $result);  // Pass $result to the view
   }
 }
