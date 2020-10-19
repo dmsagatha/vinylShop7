@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Json;
+use App\Models\Genre;
 use App\Models\Record;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Genre;
-use Json;
+use Illuminate\Support\Facades\Http;
 
 class ShopController extends Controller
 {
@@ -80,7 +81,18 @@ class ShopController extends Controller
     $record->genreName = $record->genre->name;
     // Remover todos los campos que no esta usando en la vista
     unset($record->genre_id, $record->artist, $record->created_at, $record->updated_at, $record->title_mbid, $record->genre);
-    $result = compact('record');
+
+    // Obtener información del Record y convertirla en Json
+    $response = Http::get($record->recordUrl)->json();
+    $tracks   = $response['media'][0]['tracks'];
+    $tracks = collect($tracks)
+        ->transform(function ($item, $key) {
+            $item['length'] = gmdate('i:s', $item['length']/1000);  // PHP works with sec, not ms!!!
+            unset($item['id'], $item['recording'], $item['number']);
+            return $item;
+        });
+
+    $result = compact('tracks', 'record');
     Json::dump($result);          // http://localhost:3000/shop/1?json
 
     return view('admin.shop.show', $result);  // Pass $result to the view
