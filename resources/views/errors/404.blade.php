@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('main')
-  <h3 class="text-center my-5">404 | <span class="text-black-50">No encontrada</span></h3>
+  <h3 class="text-center my-5">404 | <span class="text-black-50">Página no encontrada</span></h3>
   <p class="text-center my-5">
     <a href="/" class="btn btn-outline-secondary btn-sm mr-2">
       <i class="fas fa-home mr-1"></i>Inicio
