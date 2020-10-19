@@ -18,6 +18,16 @@ class CreateGenresTable extends Migration
     DB::table('genres')->insert(
       [
         ['name' => 'pop/rock', 'created_at' => now()],
+        ['name' => 'blues', 'created_at' => now()],
+        ['name' => 'dance', 'created_at' => now()],
+        ['name' => 'dubstep', 'created_at' => now()],
+        ['name' => 'electro', 'created_at' => now()],
+        ['name' => 'folk', 'created_at' => now()],
+        ['name' => 'hiphop', 'created_at' => now()],
+        ['name' => 'jazz', 'created_at' => now()],
+        ['name' => 'punk', 'created_at' => now()],
+        ['name' => 'reggae', 'created_at' => now()],
+        ['name' => 'techno', 'created_at' => now()],
       ]
     );
   }

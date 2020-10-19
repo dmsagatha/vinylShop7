@@ -10,6 +10,9 @@
           <a class="nav-link" href="/">Inicio</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/shop">Tienda</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/contact-us">Contacto</a>
         </li>
       </ul>

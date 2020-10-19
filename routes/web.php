@@ -22,9 +22,6 @@ Route::get('/', function () {
 /* Route::get('/contacto', function () {
   return view('contact');
 }); */
-Route::view('contacto', 'contact');
-
-Route::view('/', 'home');
 
 // Old version
 /* Route::get('admin/records', function () {
@@ -54,7 +51,14 @@ Route::view('/', 'home');
     ]);
   });
 }); */
+
+Route::view('/', 'home');
+Route::view('contacto', 'contact');
+
 Route::prefix('admin')->group(function () {
   Route::redirect('/', 'records');
   Route::get('records', 'Admin\RecordController@index');
 });
+
+Route::get('shop', 'Admin\ShopController@index');
+Route::get('shop/{id}', 'Admin\ShopController@show');
