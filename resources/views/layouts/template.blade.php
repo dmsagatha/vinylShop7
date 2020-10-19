@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <title>@yield('title', 'The Vinyl Shop')</title>
     {{-- @include('shared.icons') --}}
+
+    @yield('css_after')
   </head>
   <body>
     @include('shared.navigation')
@@ -17,5 +19,6 @@
     @include('shared.footer')
 
     <script src="{{ mix('js/app.js') }}"></script>
+    @yield('script_after')
   </body>
 </html>
