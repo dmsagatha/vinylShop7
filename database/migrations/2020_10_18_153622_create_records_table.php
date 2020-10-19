@@ -29,21 +29,57 @@ class CreateRecordsTable extends Migration
     DB::table('records')->insert(
       [
         [
-          'genre_id' => 1,
+          'genre_id'   => 1,
           'created_at' => now(),
-          'stock' => 1,
+          'stock'  => 10,
+          'artist' => 'The Beatles',
+          'title'  => 'Please Please Me',
+          'title_mbid' => 'ade577f6-6087-4a4f-8e87-38b0f8169814',
+          'cover' => null
+        ],
+        [
+          'genre_id'   => 1,
+          'created_at' => now(),
+          'stock'  => 1,
           'artist' => 'Queen',
-          'title' => 'Greatest Hits',
+          'title'  => 'Greatest Hits',
           'title_mbid' => 'fcb78d0d-8067-4b93-ae58-1e4347e20216',
           'cover' => null
         ],
         [
-          'genre_id' => 1,
+          'genre_id'   => 1,
           'created_at' => now(),
-          'stock' => 1,
+          'stock'  => 8,
+          'artist' => 'The Rolling Stones',
+          'title'  => 'Sticky Fingers',
+          'title_mbid' => 'd883e644-5ec0-4928-9ccd-fc78bc306a46',
+          'cover' => null
+        ],
+        [
+          'genre_id'   => 3,
+          'created_at' => now(),
+          'stock'  => 10,
           'artist' => 'Shakira',
-          'title' => 'Loca',
-          'title_mbid' => 'fcb78d0d-8067-4b93-ae58-1e4347e20312',
+          'title'  => 'The Firebird: Russian Fairy Tale',
+          'title_mbid' => '53fbc664-25f9-4cdf-a5b9-9581dbf5b99e',
+          'cover' => null
+        ],
+        [
+          'genre_id'   => 3,
+          'created_at' => now(),
+          'stock'  => 10,
+          'artist' => 'ABBA',
+          'title'  => 'Mamma Mia',
+          'title_mbid' => 'f7683ed7-9497-4c62-b3e6-bc563dbe7cab',
+          'cover' => null
+        ],
+        [
+          'genre_id'   => 4,
+          'created_at' => now(),
+          'stock'  => 10,
+          'artist' => 'Beyoncé',
+          'title'  => 'Dangerously in Love',
+          'title_mbid' => '773c286c-2184-4e43-8b73-d530c672fba9',
           'cover' => null
         ],
       ]
