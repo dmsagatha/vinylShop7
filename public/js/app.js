@@ -37282,6 +37282,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Make '
 window.VinylShop = _vinylShop__WEBPACK_IMPORTED_MODULE_0__["default"]; // Run the hello() function
 
 _vinylShop__WEBPACK_IMPORTED_MODULE_0__["default"].hello();
+$(function () {
+  $('[required]').each(function () {
+    $(this).closest('.form-group').find('label').append('<sup class="text-danger mx-1">*</sup>');
+  });
+});
 
 /***/ }),
 

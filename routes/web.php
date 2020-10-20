@@ -52,8 +52,10 @@ Route::get('/', function () {
   });
 }); */
 
-Route::view('/', 'home');
-Route::view('contacto', 'contact');
+/* Route::view('/', 'home');
+Route::view('contacto', 'contact'); */
+Route::get('contact-us', 'ContactUsController@show');
+Route::post('contact-us', 'ContactUsController@sendEmail');
 
 Route::prefix('admin')->group(function () {
   Route::redirect('/', 'records');
