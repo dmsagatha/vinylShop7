@@ -16,7 +16,7 @@
   @endif --}}
 
   @if (!session()->has('success'))
-    <form action="/contact-us" method="post" novalidate>
+    <form action="/contact-us" method="post">
       @csrf
       
       <div class="form-group">

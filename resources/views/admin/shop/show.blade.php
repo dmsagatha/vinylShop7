@@ -44,7 +44,7 @@
 @section('script_after')
   <script>
     $(function () {
-      // Replace vinyl.png with real cover
+      // Reemplazar vinyl.png con la imagen real
       $('#cover').attr('src', $('#cover').data('src'));
     });
   </script>

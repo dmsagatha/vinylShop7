@@ -6,3 +6,11 @@ window.VinylShop = VinylShop;
 
 // Run the hello() function
 VinylShop.hello();
+
+$(function(){
+  $('[required]').each(function () {
+    $(this).closest('.form-group')
+            .find('label')
+            .append('<sup class="text-danger mx-1">*</sup>');
+  });
+});
