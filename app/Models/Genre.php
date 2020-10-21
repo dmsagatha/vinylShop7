@@ -10,10 +10,10 @@ class Genre extends Model
 
   protected $fillable = [];
 
-  public function getRouteKeyName()
+  /* public function getRouteKeyName()
   {
     return 'name';
-  }
+  } */
 
   public function records() 
   {

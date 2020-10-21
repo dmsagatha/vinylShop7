@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Json;
 use App\Models\Genre;
@@ -60,7 +60,7 @@ class ShopController extends Controller
     $result = compact('genres', 'records'); 
     Json::dump($result);                    // http://vinyl_shop.test/shop?json
 
-    return view('admin.shop.index', $result);     // http://localhost:3000/shop?json
+    return view('shop.index', $result);     // http://localhost:3000/shop?json
   }
 
   // Detail Page: http://vinyl_shop.test/shop/{id} or http://localhost:3000/shop/{id}
@@ -95,6 +95,6 @@ class ShopController extends Controller
     $result = compact('tracks', 'record');
     Json::dump($result);          // http://localhost:3000/shop/1?json
 
-    return view('admin.shop.show', $result);  // Pass $result to the view
+    return view('shop.show', $result);  // Pass $result to the view
   }
 }
