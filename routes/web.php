@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 /* Route::get('/', function () {
@@ -63,13 +64,24 @@ Route::view('contacto', 'contact'); */
 Route::get('contact-us', 'ContactUsController@show');
 Route::post('contact-us', 'ContactUsController@sendEmail');
 
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+Route::get('shop', 'ShopController@index');
+Route::get('shop/{id}', 'ShopController@show');
+
+/* Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
   Route::redirect('/', 'records');
   Route::get('records', 'Admin\RecordController@index');
-});
+  Route::resource('genres', 'Admin\GenreController');
+}); */
 
-Route::get('shop', 'Admin\ShopController@index');
-Route::get('shop/{id}', 'Admin\ShopController@show');
+Route::group([
+  'middleware' => ['auth', 'admin'],
+  'prefix'     => 'admin',
+  'namespace'  => 'Admin'],
+  function () {
+    Route::redirect('/', 'records');
+    Route::get('records', 'RecordController@index');
+    Route::resource('genres', 'GenreController');
+  });
 
 /* Route::middleware(['auth'])->prefix('user')->group(function () {
   Route::redirect('/', '/user/profile');
