@@ -6,9 +6,14 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 }); */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
   return view('layouts.template');
-});
+}); */
+
+Auth::routes();
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::redirect('home', '/');
+Route::view('/', 'home');
 
 /* Route::get('mySillyPage', function () {
   // abort with error 404

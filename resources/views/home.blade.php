@@ -1,10 +1,28 @@
 @extends('layouts.template')
-    
-@section('title', 'Bienvenido a The Vinyl Shop')
 
 @section('main')
   <h1>The Vinyl Shop</h1>
   <p>
-    Todas estas borrascas que nos suceden son señales de que presto ha de serenar el tiempo y han de sucedernos bien las cosas; porque no es posible que el mal ni el bien sean durables, y de aquí se sigue que, habiendo durado mucho el mal, el bien está ya cerca.
+    Bienvenido al sitio web de The Vinyl Shop, una gran tienda en línea con muchos discos de vinilo (clásicos).
   </p>
+  
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">{{ __('Dashboard') }}</div>
+
+          <div class="card-body">
+            @if (session('status'))
+              <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+              </div>
+            @endif
+
+            {{ __('You are logged in!') }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
