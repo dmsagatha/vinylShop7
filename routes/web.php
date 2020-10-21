@@ -71,8 +71,21 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 Route::get('shop', 'Admin\ShopController@index');
 Route::get('shop/{id}', 'Admin\ShopController@show');
 
-Route::middleware(['auth'])->prefix('user')->group(function () {
+/* Route::middleware(['auth'])->prefix('user')->group(function () {
   Route::redirect('/', '/user/profile');
   Route::get('profile', 'User\ProfileController@edit');
   Route::post('profile', 'User\ProfileController@update');
-});
+}); */
+
+Route::group([
+  'middleware' => ['auth'],
+  'prefix'     => 'user',
+  'namespace'  => 'User'],
+  function () {
+    Route::redirect('/', '/user/profile');
+    Route::get('profile', 'ProfileController@edit');
+    Route::post('profile', 'ProfileController@update');
+    Route::get('password', 'PasswordController@edit');
+    Route::post('password', 'PasswordController@update');
+  }
+);
