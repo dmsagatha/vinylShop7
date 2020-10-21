@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 Auth::routes();
+Route::get('logout', 'Auth\LoginController@logout');
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::redirect('home', '/');
 Route::view('/', 'home');
@@ -62,7 +63,7 @@ Route::view('contacto', 'contact'); */
 Route::get('contact-us', 'ContactUsController@show');
 Route::post('contact-us', 'ContactUsController@sendEmail');
 
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
   Route::redirect('/', 'records');
   Route::get('records', 'Admin\RecordController@index');
 });

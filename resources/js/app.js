@@ -13,4 +13,7 @@ $(function(){
             .find('label')
             .append('<sup class="text-danger mx-1">*</sup>');
   });
+
+  // Dar a los íconos de Font Awesome un ancho fijo y un margen derecho
+  $('nav i.fas').addClass('fa-fw mr-1');
 });

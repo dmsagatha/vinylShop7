@@ -37285,7 +37285,9 @@ _vinylShop__WEBPACK_IMPORTED_MODULE_0__["default"].hello();
 $(function () {
   $('[required]').each(function () {
     $(this).closest('.form-group').find('label').append('<sup class="text-danger mx-1">*</sup>');
-  });
+  }); // Dar a los íconos de Font Awesome un ancho fijo y un margen derecho
+
+  $('nav i.fas').addClass('fa-fw mr-1');
 });
 
 /***/ }),
