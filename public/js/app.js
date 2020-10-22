@@ -40485,9 +40485,44 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   !*** ./resources/js/vinylShop.js ***!
   \***********************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /var/www/laravel/vinylShop7/resources/js/vinylShop.js: Unexpected token, expected \",\" (34:0)\n\n\u001b[0m \u001b[90m 32 | \u001b[39m    $(\u001b[32m'.btn.disabled'\u001b[39m)\u001b[33m.\u001b[39mparent()\u001b[33m.\u001b[39mcss(\u001b[32m'cursor'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'not-allowed'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 33 | \u001b[39m  }\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 34 | \u001b[39m})()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 35 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 36 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m \u001b[33mVinylShop\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n    at Parser._raise (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:799:17)\n    at Parser.raiseWithData (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:792:17)\n    at Parser.raise (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:786:17)\n    at Parser.unexpected (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9089:16)\n    at Parser.expect (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9075:28)\n    at Parser.parseCallExpressionArguments (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:10167:14)\n    at Parser.parseCoverCallAndAsyncArrowHead (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:10092:29)\n    at Parser.parseSubscript (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:10028:19)\n    at Parser.parseSubscripts (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9999:19)\n    at Parser.parseExprSubscripts (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9982:17)\n    at Parser.parseUpdate (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9956:21)\n    at Parser.parseMaybeUnary (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9945:17)\n    at Parser.parseExprOps (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9815:23)\n    at Parser.parseMaybeConditional (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9789:23)\n    at Parser.parseMaybeAssign (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9752:21)\n    at Parser.parseExpressionBase (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9696:23)\n    at allowInAnd (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9690:39)\n    at Parser.allowInAnd (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:11442:16)\n    at Parser.parseExpression (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9690:17)\n    at Parser.parseStatementContent (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:11708:23)\n    at Parser.parseStatement (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:11577:17)\n    at Parser.parseBlockOrModuleBlockBody (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:12159:25)\n    at Parser.parseBlockBody (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:12145:10)\n    at Parser.parseBlock (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:12129:10)\n    at Parser.parseFunctionBody (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:11108:24)\n    at Parser.parseFunctionBodyAndFinish (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:11091:10)\n    at withTopicForbiddingContext (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:12299:12)\n    at Parser.withTopicForbiddingContext (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:11417:14)\n    at Parser.parseFunction (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:12298:10)\n    at Parser.parseFunctionOrFunctionSent (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:10511:17)\n    at Parser.parseExprAtom (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:10336:21)\n    at Parser.parseExprSubscripts (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9976:23)\n    at Parser.parseUpdate (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9956:21)\n    at Parser.parseMaybeUnary (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9945:17)\n    at Parser.parseExprOps (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9815:23)\n    at Parser.parseMaybeConditional (/var/www/laravel/vinylShop7/node_modules/@babel/parser/lib/index.js:9789:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var VinylShop = function () {
+  function hello() {
+    console.log('El JavaScript de la Tienda de Vinilos funciona! 🙂');
+  }
+  /**
+   * Show a Noty toast.
+   * @param {object} obj
+   * @param {string} [obj.type='success'] - background color ('success' | 'error '| 'info' | 'warning')
+   * @param {string} [obj.text='...'] - text message
+   */
+
+
+  function toast(obj) {
+    var toastObj = obj || {}; // if no object specified, create a new empty object
+
+    new Noty({
+      layout: 'topRight',
+      timeout: 3000,
+      modal: false,
+      type: toastObj.type || 'success',
+      // if no type specified, use 'success'
+      text: toastObj.text || '...' // if no text specified, use '...'
+
+    }).show();
+  } // Devuelve todas las funciones que están disponibles públicamente. Ej: VinylShop.hello ()
+
+
+  return {
+    hello: hello,
+    toast: toast
+  };
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (VinylShop);
 
 /***/ }),
 
