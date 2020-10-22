@@ -28,7 +28,9 @@
         @endguest
 
         <li class="nav-item">
-          <a class="nav-link" href="/basket"><i class="fas fa-shopping-basket"></i>Carrito</a>
+          <a class="nav-link" href="/basket">
+            <i class="fas fa-shopping-basket"></i>Carrito
+            <span class="badge badge-success">4</span></a>
         </li>
 
         @auth
