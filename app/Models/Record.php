@@ -10,11 +10,6 @@ class Record extends Model
 
   protected $fillable = [];
 
-  public function getRouteKeyName()
-  {
-    return '';
-  }
-
   public function genre() 
   {
     return $this->belongsTo(Genre::class)->withDefault();   // a record belongs to a genre

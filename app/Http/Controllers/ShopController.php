@@ -34,7 +34,7 @@ class ShopController extends Controller
               $query->where('title', 'like', $artist_title)
                     ->where('genre_id', 'like', $genre_id);
           })
-          ->paginate(3)
+          ->paginate(4)
           ->appends(['artist'=> $request->input('artist'), 'genre_id' => $request->input('genre_id')]);
           // OR ->appends(['artist' => $request->artist, 'genre_id' => $request->genre_id]);
 
