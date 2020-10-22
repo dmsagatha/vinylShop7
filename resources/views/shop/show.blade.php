@@ -4,48 +4,115 @@
 
 @section('main')
   <h1>{{ $record->title }}</h1>
+
+  @include('shared.alert')
+
+  @auth()
+  @if(auth()->user()->admin)
+    <div class="alert alert-primary">
+    <a href="/admin/records/create" class="btn btn-success">
+      <i class="fas fa-plus-circle mr-1"></i>Nuevo disco
+    </a>
+    <a href="/admin/records/{{ $record->id }}/edit" class="btn btn-primary">
+      <i class="fas fa-edit mr-1"></i>Editar disco
+    </a>
+    <a href="#!" class="btn btn-danger" id="deleteRecord">
+      <i class="fas fa-trash mr-1"></i>Eliminar disco
+    </a>
+    </div>
+  @endif
+  @endauth
   
   <div class="row">
-    <div class="col-sm-4 text-center">
-      <img class="img-thumbnail" id="cover" src="{{ asset('/assets/vinyl.png') }}" data-src="{{ $record->cover }}" alt="{{ $record->title }}">
-      <p>
-        <a href="#!" class="btn {{ $record->btnClass }} btn-sm btn-block mt-3 {{ $record->stock == 0 ? 'disabled' : '' }}">
-          <i class="fas fa-cart-plus mr-3"></i>Adicionar al carro
-        </a>
-      </p>
-      <p class="text-left">Género: {{ $record->genreName }}<br>
-        Existencia: {{ $record->stock }}<br>
-        Precio: € {{ number_format($record->price, 2) }}</p>
-    </div>
-    
-    <div class="col-sm-8">
-      <table class="table table-sm">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Pista</th>
-            <th>Duración</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($tracks as $track)
-            <tr>
-              <td>{{ $track['position'] }}</td>
-              <td>{{ $track['title'] }}</td>
-              <td>{{ $track['length'] }}</td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </div>
+  <div class="col-sm-4 text-center">
+    <img class="img-thumbnail" id="cover" src="{{ asset('/assets/vinyl.png') }}" data-src="{{ $record->cover }}" alt="{{ $record->title }}">
+    <p>
+    <a href="#!" class="btn {{ $record->btnClass }} btn-sm btn-block mt-3 {{ $record->stock == 0 ? 'disabled' : '' }}">
+      <i class="fas fa-cart-plus mr-3"></i>Adicionar al carro
+    </a>
+    </p>
+    <p class="text-left">Género: {{ $record->genreName }}<br>
+    Existencia: {{ $record->stock }}<br>
+    Precio: € {{ number_format($record->price, 2) }}</p>
+  </div>
+  
+  <div class="col-sm-8">
+    <table class="table table-sm">
+    <thead>
+      <tr>
+      <th>#</th>
+      <th>Pista</th>
+      <th>Duración</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($tracks as $track)
+      <tr>
+        <td>{{ $track['position'] }}</td>
+        <td>{{ $track['title'] }}</td>
+        <td>{{ $track['length'] }}</td>
+      </tr>
+      @endforeach
+    </tbody>
+    </table>
+  </div>
   </div>
 @endsection
 
 @section('script_after')
   <script>
-    $(function () {
-      // Reemplazar vinyl.png con la imagen real
-      $('#cover').attr('src', $('#cover').data('src'));
-    });
+  $(function () {
+    // Reemplazar vinyl.png con la imagen real
+    $('#cover').attr('src', $('#cover').data('src'));
+
+    // Get tracks from MusicBrainz API
+   /*  $.getJSON('{{ $record->recordUrl }}')
+      .done(function (data) {...})
+      .fail(function (error) {...}); */
+
+      // Delete this record
+      @auth()
+        @if(auth()->user()->admin)
+          $('#deleteRecord').click(function () {
+            let id = '{{ $record->id }}';
+            console.log(`delete record ${id}`);
+            // Show Noty
+            let modal = new Noty({
+              text: '<p>Eliminar canción <b>{{ $record->title }}</b>?</p>',
+              buttons: [
+                Noty.button('Eliminar canción', 'btn btn-danger', function () {
+                  // Eliminar canción y cerrar modal
+                  let pars = {
+                    '_token': '{{ csrf_token() }}',
+                    '_method': 'delete'
+                  };
+                  $.post(`/admin/records/${id}`, pars, 'json')
+                    .done(function (data) {
+                      console.log('data', data);
+                      // Show toast
+                      VinylShop.toast({
+                        type: data.type,
+                        text: data.text
+                      });
+                      // Después de 2 segundos, redirige a la página ppal.
+                      setTimeout(function () {
+                        $(location).attr('href', '/shop'); // jQuery
+                        // window.location = '/shop'; // JavaScript
+                      }, 2000);
+                    })
+                    .fail(function (e) {
+                      console.log('error', e);
+                    });
+                  modal.close();
+                }),
+                Noty.button('Cancelar', 'btn btn-secondary ml-2', function () {
+                  modal.close();
+                })
+              ]
+            }).show();
+          });
+        @endif
+      @endauth
+    })
   </script>
 @endsection

@@ -82,7 +82,7 @@ Route::group([
     // http://localhost:3000/admin/genres/qryGenres
     Route::get('genres/qryGenres', 'GenreController@qryGenres');
     Route::resource('genres', 'GenreController');
-    Route::get('records', 'RecordController@index');
+    Route::resource('records', 'RecordController');
   });
 
 /* Route::middleware(['auth'])->prefix('user')->group(function () {

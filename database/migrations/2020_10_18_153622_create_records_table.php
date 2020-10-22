@@ -60,8 +60,8 @@ class CreateRecordsTable extends Migration
           'created_at' => now(),
           'stock'  => 10,
           'artist' => 'Shakira',
-          'title'  => 'The Firebird: Russian Fairy Tale',
-          'title_mbid' => '53fbc664-25f9-4cdf-a5b9-9581dbf5b99e',
+          'title'  => 'She Wolf',
+          'title_mbid' => 'd355c7e2-e065-42ee-ad7f-990f9c0815f8',
           'cover' => null
         ],
         [
@@ -80,6 +80,24 @@ class CreateRecordsTable extends Migration
           'artist' => 'Beyoncé',
           'title'  => 'Dangerously in Love',
           'title_mbid' => '773c286c-2184-4e43-8b73-d530c672fba9',
+          'cover' => null
+        ],
+        [
+          'genre_id'   => 1,
+          'created_at' => now(),
+          'stock'  => 5,
+          'artist' => 'The Doors',
+          'title'  => 'L.A. Woman',
+          'title_mbid' => 'e68f23df-61e3-4264-bfc3-17ac3a6f856b',
+          'cover' => null
+        ],
+        [
+          'genre_id'   => 1,
+          'created_at' => now(),
+          'stock'  => 2,
+          'artist' => 'Ramones',
+          'title'  => 'End of the Century',
+          'title_mbid' => '58dcd354-a89a-48ea-9e6e-e258cb23e11d',
           'cover' => null
         ],
       ]
