@@ -11,12 +11,21 @@ class GenreController extends Controller
 {
   public function index()
   {
-    return view('admin.genres.index');
+    $genres = Genre::orderBy('name')
+        ->withCount('records')
+        ->get();
+    $result = compact('genres');
+    Json::dump($result);    // http://localhost:3000/admin/genres?json
+
+    return view('admin.genres.index', $result);
   }
   
   public function create()
   {
-    return redirect('admin/genres');
+    $genre = new Genre();
+    $result = compact('genre');
+
+    return view('admin.genres.create', $result);
   }
   
   public function store(Request $request)
@@ -29,10 +38,9 @@ class GenreController extends Controller
     $genre->name = $request->name;
     $genre->save();
 
-    return response()->json([
-      'type' => 'success',
-      'text' => "El género musical <b>$genre->name</b> fue creado!"
-    ]);
+    session()->flash('success', "El género musical <b>$genre->name</b> fue creado!");
+
+    return redirect('admin/genres');
   }
   
   public function show(Genre $genre)
@@ -42,7 +50,10 @@ class GenreController extends Controller
   
   public function edit(Genre $genre)
   {
-    return redirect('admin/genres');
+    $result = compact('genre');
+    Json::dump($result);
+
+    return view('admin.genres.edit', $result);
   }
   
   public function update(Request $request, Genre $genre)
@@ -54,28 +65,17 @@ class GenreController extends Controller
     $genre->name = $request->name;
     $genre->save();
 
-    return response()->json([
-        'type' => 'success',
-        'text' => "El género musical <b>$genre->name</b> fue actualizado!"
-    ]);
+    session()->flash('success', "El género musical <b>$genre->name</b> fue actualizado!");
+
+    return redirect('admin/genres');
   }
   
   public function destroy(Genre $genre)
   {
     $genre->delete();
 
-    return response()->json([
-        'type' => 'success',
-        'text' => "El género musical <b>$genre->name</b> fue eliminado!"
-    ]);
-  }
-  
-  public function qryGenres()
-  {
-    $genres = Genre::orderBy('name')
-        ->withCount('records')
-        ->get();
+    session()->flash('success', "El género musical <b>$genre->name</b> fue eliminado!");
 
-    return $genres;       // Devuelve el resultado (como JSON)
+    return redirect('admin/genres');
   }
 }

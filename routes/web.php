@@ -79,8 +79,10 @@ Route::group([
   'namespace'  => 'Admin'],
   function () {
     Route::redirect('/', 'records');
-    Route::get('records', 'RecordController@index');
+    // http://localhost:3000/admin/genres/qryGenres
+    Route::get('genres/qryGenres', 'GenreController@qryGenres');
     Route::resource('genres', 'GenreController');
+    Route::get('records', 'RecordController@index');
   });
 
 /* Route::middleware(['auth'])->prefix('user')->group(function () {

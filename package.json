@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "ngrok": "^3.3.0"
+        "ngrok": "^3.3.0",
+        "noty": "^3.2.0-beta"
     }
 }
