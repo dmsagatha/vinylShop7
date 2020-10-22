@@ -35,7 +35,7 @@ class CreateRecordsTable extends Migration
           'artist' => 'The Beatles',
           'title'  => 'Please Please Me',
           'title_mbid' => 'ade577f6-6087-4a4f-8e87-38b0f8169814',
-          'cover' => 'https://coverartarchive.org/release/ade577f6-6087-4a4f-8e87-38b0f8169814/front-250.jpg'
+          'cover' => null
         ],
         [
           'genre_id'   => 1,
@@ -44,7 +44,7 @@ class CreateRecordsTable extends Migration
           'artist' => 'Queen',
           'title'  => 'Greatest Hits',
           'title_mbid' => 'fcb78d0d-8067-4b93-ae58-1e4347e20216',
-          'cover' => 'https://coverartarchive.org/release/fcb78d0d-8067-4b93-ae58-1e4347e20216/front-250.jpg'
+          'cover' => null
         ],
         [
           'genre_id'   => 1,
@@ -53,7 +53,7 @@ class CreateRecordsTable extends Migration
           'artist' => 'The Rolling Stones',
           'title'  => 'Sticky Fingers',
           'title_mbid' => 'd883e644-5ec0-4928-9ccd-fc78bc306a46',
-          'cover' => 'https://coverartarchive.org/release/d883e644-5ec0-4928-9ccd-fc78bc306a46/front-250.jpg'
+          'cover' => null
         ],
         [
           'genre_id'   => 3,
@@ -62,7 +62,7 @@ class CreateRecordsTable extends Migration
           'artist' => 'Shakira',
           'title'  => 'She Wolf',
           'title_mbid' => 'd355c7e2-e065-42ee-ad7f-990f9c0815f8',
-          'cover' => 'https://coverartarchive.org/release/d355c7e2-e065-42ee-ad7f-990f9c0815f8/front-250.jpg'
+          'cover' => null
         ],
         [
           'genre_id'   => 3,
@@ -71,7 +71,7 @@ class CreateRecordsTable extends Migration
           'artist' => 'ABBA',
           'title'  => 'Mamma Mia',
           'title_mbid' => 'f7683ed7-9497-4c62-b3e6-bc563dbe7cab',
-          'cover' => 'https://coverartarchive.org/release/f7683ed7-9497-4c62-b3e6-bc563dbe7cab/front-250.jpg'
+          'cover' => null
         ],
         [
           'genre_id'   => 4,
@@ -80,7 +80,7 @@ class CreateRecordsTable extends Migration
           'artist' => 'Beyoncé',
           'title'  => 'Dangerously in Love',
           'title_mbid' => '773c286c-2184-4e43-8b73-d530c672fba9',
-          'cover' => 'https://coverartarchive.org/release/773c286c-2184-4e43-8b73-d530c672fba9/front-250.jpg'
+          'cover' => null
         ],
         [
           'genre_id'   => 1,
@@ -89,7 +89,7 @@ class CreateRecordsTable extends Migration
           'artist' => 'The Doors',
           'title'  => 'L.A. Woman',
           'title_mbid' => 'e68f23df-61e3-4264-bfc3-17ac3a6f856b',
-          'cover' => 'https://coverartarchive.org/release/e68f23df-61e3-4264-bfc3-17ac3a6f856b/front-250.jpg'
+          'cover' => null
         ],
         [
           'genre_id'   => 1,
@@ -98,7 +98,8 @@ class CreateRecordsTable extends Migration
           'artist' => 'Ramones',
           'title'  => 'End of the Century',
           'title_mbid' => '58dcd354-a89a-48ea-9e6e-e258cb23e11d',
-          'cover' => 'https://coverartarchive.org/release/58dcd354-a89a-48ea-9e6e-e258cb23e11d/front-250.jpg'
+          // 'cover' => 'https://coverartarchive.org/release/58dcd354-a89a-48ea-9e6e-e258cb23e11d/front-250.jpg'
+          'cover'  => null
         ],
       ]
     );

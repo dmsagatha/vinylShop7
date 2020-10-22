@@ -26,6 +26,11 @@ let VinylShop = (function () {
     hello: hello,
     toast: toast,
   };
+
+
+  $(function() {
+    $('.btn.disabled').parent().css('cursor', 'not-allowed');
+  }
 })();
 
 export default VinylShop;
