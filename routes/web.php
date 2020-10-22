@@ -103,3 +103,14 @@ Route::group([
     Route::post('password', 'PasswordController@update');
   }
 );
+
+Route::group([
+  'prefix'  => 'basket',
+  ],
+  function () {
+    Route::get('/', 'BasketController@index');
+    Route::get('/add/{id}', 'BasketController@addToCart');
+    Route::get('/delete/{id}', 'BasketController@deleteFromCart');
+    Route::get('/empty', 'BasketController@emptyCart');
+  }
+);
