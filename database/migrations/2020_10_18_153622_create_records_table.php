@@ -76,7 +76,7 @@ class CreateRecordsTable extends Migration
         [
           'genre_id'   => 4,
           'created_at' => now(),
-          'stock'  => 10,
+          'stock'  => 0,
           'artist' => 'Beyoncé',
           'title'  => 'Dangerously in Love',
           'title_mbid' => '773c286c-2184-4e43-8b73-d530c672fba9',

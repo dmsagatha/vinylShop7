@@ -27,7 +27,8 @@
     <div class="col-sm-4 text-center">
       <img class="img-thumbnail" id="cover" src="{{ asset('/assets/vinyl.png') }}" data-src="{{ $record->cover }}" alt="{{ $record->title }}">
       <p>
-        <a href="/basket/add/{{ $record->id }}" class="btn {{ $record->btnClass }} btn-sm btn-block mt-3 {{ $record->stock == 0 ? 'disabled' : '' }}">
+        <a href="/basket/add/{{ $record->id }}" class="btn {{ $record->btnClass }} btn-sm btn-block mt-3
+          {{ $record->stock == 0 ? 'disabled' : '' }}">
           <i class="fas fa-cart-plus mr-3"></i>Adicionar al carro
         </a>
       </p>
