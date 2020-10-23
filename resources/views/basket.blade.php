@@ -5,30 +5,6 @@
 @section('main')
   <h1>Canasta</h1>
 
-{{--   <table class="table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Artista - Albúm</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($records as $record)
-        <tr>
-          <td>{{ $record->id }}</td>
-          <td>{{ $record->artist }} - {{ $record->title }}</td>
-          <td>
-            <div class="btn-group btn-group-sm">
-              <a href="/basket/add/{{ $record->id }}" class="btn btn-outline-success">+1</a>
-              <a href="/basket/delete/{{ $record->id }}" class="btn btn-outline-danger">-1</a>
-            </div>
-          </td>
-        </tr>
-      @endforeach
-    </tbody>
-  </table> --}}
-
   @if( Cart::getTotalQty() == 0)
     <div class="alert alert-primary">
       Su canasta esta vacía.
@@ -45,48 +21,51 @@
           <tr>
             <th class="width-50">Cantidad</th>
             <th class="width-80">Precio</th>
-            <th class="width-80"></th>
-            <th>Record</th>
-            <th class="width-120"></th>
+            <th class="width-80">Portada</th>
+            <th>Canción</th>
+            <th class="width-120">Pedido</th>
           </tr>
         </thead>
         <tbody>
-        @foreach(Cart::getRecords() as $record)
+          @foreach(Cart::getRecords() as $record)
+            <tr>
+              <td>{{ $record['qty'] }}</td>
+              <td>€&nbsp;{{ $record['price'] }}</td>
+              <td>
+                <img class="img-thumbnail cover" src="{{ asset('/assets/vinyl.png') }}"
+                    data-src="{{ $record['cover'] }}"
+                    alt="{{ $record['title'] }}">
+              </td>
+              <td>
+                {{ $record['artist'] . ' - ' . $record['title']  }}
+              </td>
+              <td>
+                <div class="btn-group btn-group-sm">
+                  <a href="/basket/delete/{{ $record['id'] }}" class="btn btn-outline-secondary">-1</a>
+                  <a href="/basket/add/{{ $record['id'] }}" class="btn btn-outline-secondary">+1</a>
+                  <a href="/basket/remove/{{ $record['id'] }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          @endforeach
           <tr>
-            <td>{{ $record['qty'] }}</td>
-            <td>€&nbsp;{{ $record['price'] }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td>
-              <img class="img-thumbnail cover" src="/assets/vinyl.png"
-                data-src="{{ $record['cover'] }}"
-                alt="{{ $record['title'] }}">
+              <p><a href="/basket/empty" class="btn btn-sm btn-outline-danger">Su canasta esta vacía</a></p>
             </td>
             <td>
-              {{ $record['artist'] . ' - ' . $record['title']  }}
-            </td>
-            <td>
-              <div class="btn-group btn-group-sm">
-                <a href="/basket/delete/{{ $record['id'] }}" class="btn btn-outline-secondary">-1</a>
-                <a href="/basket/add/{{ $record['id'] }}" class="btn btn-outline-secondary">+1</a>
-              </div>
+              <p><b>Total</b>: €&nbsp;{{ Cart::getTotalPrice() }}</p>
+              @auth()
+                <p>
+                  <a href="/user/checkout" class="btn btn-sm btn-outline-success">Pagar</a>
+                </p>
+              @endauth
             </td>
           </tr>
-        @endforeach
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>
-            <p><a href="/basket/empty" class="btn btn-sm btn-outline-danger">Su canasta esta vacía</a></p>
-          </td>
-          <td>
-            <p><b>Total</b>: €&nbsp;{{ Cart::getTotalPrice() }}</p>
-            @auth()
-              <p>
-                <a href="/user/checkout" class="btn btn-sm btn-outline-success">Pagar</a>
-              </p>
-            @endauth
-          </td>
-        </tr>
         </tbody>
       </table>
     </div>

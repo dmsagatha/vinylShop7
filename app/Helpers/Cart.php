@@ -34,12 +34,12 @@ class Cart
     */
     if (!array_key_exists($id, $this->cart['records'])) {
         $this->cart['records'][$id] = [
-            'id' => $item->id,
-            'title' => $item->title,
+            'id'     => $item->id,
+            'title'  => $item->title,
             'artist' => $item->artist,
-            'cover' => $item->cover,
-            'qty' => 1,
-            'price' => $item->price
+            'cover'  => $item->cover,
+            'qty'    => 1,
+            'price'  => $item->price
         ];
     }
     /* De lo contrario, si el elemento ya existe
@@ -54,7 +54,7 @@ class Cart
     session()->put('cart', $this->cart);  // save the session
   }
 
-  // Delete a record from the cart
+  // Elimnar los registros del carro de compras
   public function delete($item)
   {
     $id = $item->id;
@@ -73,25 +73,25 @@ class Cart
     session()->put('cart', $this->cart);  // save the session
   }
 
-  // Empty the cart 
+  // Limpiar el carro de compras 
   public function empty()
   {
     session()->forget('cart');
   }
 
-  // Get the complete cart
+  // Obtener el carro de compras completo
   public function getCart()
   {
     return $this->cart;
   }
 
-  // Get all the records from the cart
+  // Obtener todos los regiostros del carro de compras
   public function getRecords()
   {
     return $this->cart['records'];
   }
 
-  // Get one record from the cart
+  // Obtener un registro del carro de compras
   public function getOneRecord($key)
   {
     if (array_key_exists($key, $this->cart['records'])) {
@@ -99,28 +99,28 @@ class Cart
     }
   }
 
-  // Get all the record keys
+  // Obtener todas las claves de registro
   public function getKeys()
   {
     return array_keys($this->cart['records']);
   }
   
-  // Get the number of items 
+  // Obtener el número de ítems
   public function getTotalQty()
   {
     return $this->cart['totalQty'];
   }
 
-  // Get the total price
+  // Obtener el total de precio
   public function getTotalPrice()
   {
     return $this->cart['totalPrice'];
   }
 
-  // Calculate the number of items and total price
+  // Calcular el número de items y el precio total
   private function updateTotal()
   {
-    // Recorrer cada registro dentro del carrito y actualizar $totalQtyy$totalPrice
+    // Recorrer cada registro dentro del carro de compras y actualizar $totalQtyy$totalPrice
     $totalQty   = 0;
     $totalPrice = 0;
     
@@ -129,7 +129,7 @@ class Cart
         $totalPrice += $record['price'];
     }
 
-    // Actualiza el carrito con los nuevos valores
+    // Actualiza el carro de compras con los nuevos valores
     $this->cart['totalQty'] = $totalQty;
     $this->cart['totalPrice'] = round($totalPrice, 2);
   }
