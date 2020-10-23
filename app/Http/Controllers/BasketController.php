@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Json;
 use Cart;
+use Json;
 use App\Models\Record;
 use Illuminate\Http\Request;
 
@@ -11,9 +11,9 @@ class BasketController extends Controller
 {
   public function index()
   {
-    // Take the first 3 records, ordered by album title
+    // Toma los primeros 3 registros, ordenados por título de álbum.
     $records = Record::orderBy('title')->take(3)->get();
-    $result = compact('records');
+    $result  = compact('records');
     Json::dump($result);
 
     return view('basket', $result);
@@ -22,7 +22,10 @@ class BasketController extends Controller
   public function addToCart($id)
   {
     $record = Record::findOrFail($id);
+    $record->cover = $record->cover ?? "https://coverartarchive.org/release/$record->title_mbid/front-250.jpg";
     Cart::add($record);
+
+    session()->flash('success', "La canción <b>$record->title</b> de <b>$record->artist</b> fue adicionada en la canasta!");
 
     return back();
   }
