@@ -101,6 +101,8 @@ Route::group([
     Route::post('profile', 'ProfileController@update');
     Route::get('password', 'PasswordController@edit');
     Route::post('password', 'PasswordController@update');
+    Route::get('history', 'HistoryController@index');
+    Route::get('checkout', 'HistoryController@checkout');
   }
 );
 
