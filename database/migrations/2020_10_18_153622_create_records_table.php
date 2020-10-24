@@ -76,7 +76,7 @@ class CreateRecordsTable extends Migration
         [
           'genre_id'   => 4,
           'created_at' => now(),
-          'stock'  => 10,
+          'stock'  => 0,
           'artist' => 'Beyoncé',
           'title'  => 'Dangerously in Love',
           'title_mbid' => '773c286c-2184-4e43-8b73-d530c672fba9',
@@ -98,7 +98,8 @@ class CreateRecordsTable extends Migration
           'artist' => 'Ramones',
           'title'  => 'End of the Century',
           'title_mbid' => '58dcd354-a89a-48ea-9e6e-e258cb23e11d',
-          'cover' => null
+          // 'cover' => 'https://coverartarchive.org/release/58dcd354-a89a-48ea-9e6e-e258cb23e11d/front-250.jpg'
+          'cover'  => null
         ],
       ]
     );
