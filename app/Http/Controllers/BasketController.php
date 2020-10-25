@@ -22,7 +22,10 @@ class BasketController extends Controller
   public function addToCart($id)
   {
     $record = Record::findOrFail($id);
+    $record->cover = $record->cover ?? "https://coverartarchive.org/release/$record->title_mbid/front-250.jpg";
     Cart::add($record);
+
+    session()->flash('success', "La canción <b>$record->title</b> de <b>$record->artist</b> fue adicionada al carro de compras.");
 
     return back();
   }
@@ -38,7 +41,7 @@ class BasketController extends Controller
   public function emptyCart()
   {
     Cart::empty();
-    
+
     return redirect('basket');
   }
 }
