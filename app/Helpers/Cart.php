@@ -18,7 +18,7 @@ class Cart
     }
   }
 
-  // Adicionar un disco al carro de compras
+  // Adicionar una canción al carro de compras
   public function add($item)
   {
     // Extraer el id y el precio
@@ -58,7 +58,7 @@ class Cart
     session()->put('cart', $this->cart);  // Guardar la sesión
   }
 
-  // Eliminar un disco del carro de compras
+  // Eliminar una canción del carro de compras
   public function delete($item)
   {
     $id = $item->id;

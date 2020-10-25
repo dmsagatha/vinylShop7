@@ -44,7 +44,7 @@
   <div class="row">
     @foreach($records as $record)
       <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-        <div class="card" data-id="{{ $record->id }}">
+        <div class="card h-100" data-id="{{ $record->id }}">
           <img class="card-img-top" src="{{ asset('/assets/vinyl.png') }}" data-src="{{ $record->cover }}" alt="{{ $record->artist }} - {{ $record->title }}">
 
           <div class="card-body">

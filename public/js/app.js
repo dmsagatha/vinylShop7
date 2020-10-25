@@ -40523,6 +40523,9 @@ var VinylShop = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = (VinylShop);
+/* $(function() {
+  $('.btn.disabled').parent().css('cursor', 'not-allowed');
+}); */
 
 /***/ }),
 
