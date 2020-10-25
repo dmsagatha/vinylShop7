@@ -103,3 +103,8 @@ Route::group([
     Route::post('password', 'PasswordController@update');
   }
 );
+
+Route::get('basket', 'BasketController@index');
+Route::get('basket/add/{id}', 'BasketController@addToCart');
+Route::get('basket/delete/{id}', 'BasketController@deleteFromCart');
+Route::get('basket/empty', 'BasketController@emptyCart');
