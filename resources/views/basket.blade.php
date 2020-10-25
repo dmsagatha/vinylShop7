@@ -95,7 +95,7 @@
   </table>
   
   <a href="/basket/empty" class="btn btn-sm btn-outline-danger">Empty basket</a>
-
+ --}}
   <h2 class="mt-5">What's inside my basket?</h2>
   <hr>
   <h4>Cart::getCart():</h4>
@@ -109,7 +109,7 @@
   <hr>
   <p><b>Cart::getKeys()</b>: {{ json_encode(Cart::getKeys()) }}</p>
   <p><b>Cart::getTotalPrice()</b>: {{ json_encode(Cart::getTotalPrice()) }}</p>
-  <p><b>Cart::getTotalQty()</b>: {{ json_encode(Cart::getTotalQty()) }}</p> --}}
+  <p><b>Cart::getTotalQty()</b>: {{ json_encode(Cart::getTotalQty()) }}</p>
 @endsection
 
 @section('script_after')

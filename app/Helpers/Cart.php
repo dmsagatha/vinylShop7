@@ -125,7 +125,7 @@ class Cart
   private function updateTotal()
   {
     // Recorrer cada registro dentro del carrito y actualizar $totalQtyy y $totalPrice
-    $totalQty = 0;
+    $totalQty   = 0;
     $totalPrice = 0;
 
     foreach ($this->cart['records'] as $record) {

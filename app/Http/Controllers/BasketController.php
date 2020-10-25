@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Record;
-use Facades\App\Helpers\Cart;
 use Json;
+use Cart;
 use Illuminate\Http\Request;
 
 class BasketController extends Controller
@@ -23,6 +23,7 @@ class BasketController extends Controller
   {
     $record = Record::findOrFail($id);
     $record->cover = $record->cover ?? "https://coverartarchive.org/release/$record->title_mbid/front-250.jpg";
+
     Cart::add($record);
 
     session()->flash('success', "La canción <b>$record->title</b> de <b>$record->artist</b> fue adicionada al carro de compras.");
