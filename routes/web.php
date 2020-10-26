@@ -101,16 +101,12 @@ Route::group([
     Route::post('profile', 'ProfileController@update');
     Route::get('password', 'PasswordController@edit');
     Route::post('password', 'PasswordController@update');
+    Route::get('history', 'HistoryController@index');
+    Route::get('checkout', 'HistoryController@checkout');
   }
 );
 
-Route::group([
-  'prefix'  => 'basket',
-  ],
-  function () {
-    Route::get('/', 'BasketController@index');
-    Route::get('/add/{id}', 'BasketController@addToCart');
-    Route::get('/delete/{id}', 'BasketController@deleteFromCart');
-    Route::get('/empty', 'BasketController@emptyCart');
-  }
-);
+Route::get('basket', 'BasketController@index');
+Route::get('basket/add/{id}', 'BasketController@addToCart');
+Route::get('basket/delete/{id}', 'BasketController@deleteFromCart');
+Route::get('basket/empty', 'BasketController@emptyCart');

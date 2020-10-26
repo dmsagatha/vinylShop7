@@ -28,24 +28,25 @@
       <img class="img-thumbnail" id="cover" src="{{ asset('/assets/vinyl.png') }}" data-src="{{ $record->cover }}" alt="{{ $record->title }}">
       <p>
         <a href="/basket/add/{{ $record->id }}" class="btn {{ $record->btnClass }} btn-sm btn-block mt-3
-          {{ $record->stock == 0 ? 'disabled' : '' }}">
-          <i class="fas fa-cart-plus mr-3"></i>Adicionar al carro
+            {{ $record->stock == 0 ? 'disabled' : '' }}">
+                <i class="fas fa-cart-plus mr-3"></i>Adicionar al carro
         </a>
       </p>
-      <p class="text-left">Género: {{ $record->genreName }}<br>
-      Existencia: {{ $record->stock }}<br>
-      Precio: € {{ number_format($record->price, 2) }}</p>
+      <p class="text-left">Género musical: {{ $record->genreName }}<br>
+        Existencia: {{ $record->stock }}<br>
+        Precio: € {{ number_format($record->price, 2) }}
+      </p>
     </div>
-  
+    
     <div class="col-sm-8">
       <table class="table table-sm">
-      <thead>
-        <tr>
-        <th>#</th>
-        <th>Pista</th>
-        <th>Duración</th>
-        </tr>
-      </thead>
+        <thead>
+          <tr>
+          <th>#</th>
+          <th>Pista</th>
+          <th>Duración</th>
+          </tr>
+        </thead>
       <tbody>
         @foreach($tracks as $track)
         <tr>
