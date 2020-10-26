@@ -11,23 +11,18 @@ class BasketController extends Controller
 {
   public function index()
   {
-    // Take the first 3 records, ordered by album title
+    // Tomar los primeros 3 registros, ordenados por título de álbum
     $records = Record::orderBy('title')->take(3)->get();
     $result  = compact('records');
     Json::dump($result);
-
+    
     return view('basket', $result);
   }
 
   public function addToCart($id)
   {
     $record = Record::findOrFail($id);
-    $record->cover = $record->cover ?? "https://coverartarchive.org/release/$record->title_mbid/front-250.jpg";
-
     Cart::add($record);
-
-    session()->flash('success', "La canción <b>$record->title</b> de <b>$record->artist</b> fue adicionada al carro de compras.");
-
     return back();
   }
 
@@ -35,14 +30,12 @@ class BasketController extends Controller
   {
     $record = Record::findOrFail($id);
     Cart::delete($record);
-
     return back();
   }
 
   public function emptyCart()
   {
     Cart::empty();
-
     return redirect('basket');
   }
 }
