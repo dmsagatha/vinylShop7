@@ -8,8 +8,6 @@ class Orderline extends Model
 {
   protected $table = 'orderlines';
 
-  protected $fillable = [];
-
   public function getRouteKeyName()
   {
     return 'artist';

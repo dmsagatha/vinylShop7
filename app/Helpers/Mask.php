@@ -17,12 +17,14 @@ class Mask
   {
     $name  = $this->obfuscate($name ?: $email);
     $email = $this->obfuscate('mailto:' . $email);
+
     return new HtmlString('<a href="' . $email . '">' . $name . '</a>');
   }
 
   private function obfuscate($str)
   {
     $safe = '';
+
     foreach (str_split($str) as $char) {
       if (ord($char) > 128) {
         return $char;
@@ -38,6 +40,7 @@ class Mask
           $safe .= $char;
       }
     }
+    
     return $safe;
   }
 }

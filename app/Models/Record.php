@@ -8,8 +8,6 @@ class Record extends Model
 {
   protected $table = 'records';
 
-  protected $fillable = [];
-
   public function genre() 
   {
     return $this->belongsTo(Genre::class)->withDefault();   // a record belongs to a genre
