@@ -83,6 +83,7 @@ Route::group([
     Route::get('genres/qryGenres', 'GenreController@qryGenres');
     Route::resource('genres', 'GenreController');
     Route::resource('records', 'RecordController');
+    Route::get('orders', 'OrderController@index');
   });
 
 /* Route::middleware(['auth'])->prefix('user')->group(function () {
