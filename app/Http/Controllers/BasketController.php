@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use App\Models\Record;
 use Json;
 use Cart;
-=======
-use Cart;
-use Json;
-use App\Models\Record;
->>>>>>> master
 use Illuminate\Http\Request;
 
 class BasketController extends Controller
