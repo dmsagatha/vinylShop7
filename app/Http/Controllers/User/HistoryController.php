@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\{Order, Orderline};
-use Json;
+use Auth;
 use Cart;
+use Json;
+use Mail;
+use App\Models\User;
+use App\Mail\OrderMail;
 use Illuminate\Http\Request;
+use Twilio\TwiML\Voice\Client;
+use App\Models\{Order, Orderline};
 use App\Http\Controllers\Controller;
 
 class HistoryController extends Controller
@@ -52,10 +57,65 @@ class HistoryController extends Controller
     Cart::empty();
 
     // Redireccionar a la página del historial de compras
-    $message = 'Gracias por su pedido.<br>Su pedido se entregará lo antes posible.';
+    $message = 'Gracias por su pedido.<br>Su pedido se entregará lo antes posible.';  
+    
+    // Enviar mensaje de confirmación
+    $this->confirmEmail();
+
+    // Enviar mensaje de confirmación po WhatsApp
+    // $this->confirmWhatsApp();
 
     session()->flash('success', $message);
 
     return redirect('/user/history');
   }
+
+  private function confirmEmail()
+  {
+    // Crear el mensaje de correo
+    $message = '<p>Gracias por su pediro.<br>Los discos (canciones) se entregarán lo antes posible.</p>';
+    $message .= '<ul>';
+
+    foreach (Cart::getRecords() as $record) {
+        $message .= "<li>{$record['qty']} x {$record['artist']} - {$record['title']}</li>";
+    }
+    $message .= '</ul>';
+
+    // Obtener todos los administradores
+    $admins = User::whereAdmin(true)->select('name', 'email')->get();
+
+    $email = new OrderMail($message);
+    
+    Mail::to(Auth::user())
+        ->cc($admins)
+        ->send($email);
+  }
+  
+  /* private function confirmWhatsApp()
+  {
+    // get credentials from the .env file
+    $id    = env('TWILIO_AUTH_SID');
+    $token = env('TWILIO_AUTH_TOKEN');
+    $to    = env('TWILIO_WHATSAPP_TO');
+    $from  = env('TWILIO_WHATSAPP_FROM');
+
+    // the message for the fourth placeholder of the WhatsApp order template
+    $details = "*" . Auth::user()->name . "* has ordered:";
+    foreach (Cart::getRecords() as $record) {
+        $details .= " {$record['qty']} x {$record['artist']} - {$record['title']},";
+    }
+
+    // construct the order template for the sandbox:
+    // Your {{1}} order of {{2}} has shipped and should be delivered on {{3}}. Details: {{4}}
+    $message = "Su pedido *Vinyl Shop* de *today* ha enviado y debe ser entregado en *your address*. Detalles: $details";
+
+    // send WhatsApp message to your phone
+    $whatsApp = new Client($sid, $token);
+    $whatsApp->messages->create(
+        "whatsapp:$to", [
+            'from' => "whatsapp:$from",
+            'body' => $message
+        ]
+    );
+  } */
 }
