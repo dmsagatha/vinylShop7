@@ -30,7 +30,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/basket">
             <i class="fas fa-shopping-basket"></i>Carrito
-            <span class="badge badge-success">4</span></a>
+            <span class="badge badge-success">
+              {{ json_encode(Cart::getTotalQty()) }}
+            </span>
           </a>
         </li>
 

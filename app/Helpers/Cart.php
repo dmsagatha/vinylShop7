@@ -18,7 +18,7 @@ class Cart
     }
   }
 
-  // Add a record to the cart
+  // Adicionar un registro al carro de compras
   public function add($item)
   {
     $id = $item->id;
@@ -38,12 +38,12 @@ class Cart
         $this->cart['records'][$id]['price'] = $singlePrice * $this->cart['records'][$id]['qty'];
     }
 
-    $this->updateTotal();                 // update totalQty and totalPrice
+    $this->updateTotal();   // Actualizar totalQty y totalPrice
 
-    session()->put('cart', $this->cart);  // save the session
+    session()->put('cart', $this->cart);  // Guardar la sesión
   }
 
-  // Delete a record from the cart
+  // Eliminar un registro del carro de compras
   public function delete($item)
   {
     $id = $item->id;
@@ -58,29 +58,29 @@ class Cart
         }
         $this->updateTotal();
     }
-    
+
     session()->put('cart', $this->cart);  // save the session
   }
 
-  // Empty the cart 
+  // Vaciar el carro de compras 
   public function empty()
   {
     session()->forget('cart');
   }
 
-  // Get the complete cart
+  // Obtener el carro compleo
   public function getCart()
   {
     return $this->cart;
   }
 
-  // Get all the records from the cart
+  // Obtener todos los registro del carro de compras
   public function getRecords()
   {
     return $this->cart['records'];
   }
 
-  // Get one record from the cart
+  // Obtener un registro del carro de compras
   public function getOneRecord($key)
   {
     if (array_key_exists($key, $this->cart['records'])) {
@@ -88,25 +88,25 @@ class Cart
     }
   }
 
-  // Get all the record keys
+  // Obtener todas las claves de registro
   public function getKeys()
   {
     return array_keys($this->cart['records']);
   }
   
-  // Get the number of items 
+  // Obtener el número de ítems 
   public function getTotalQty()
   {
     return $this->cart['totalQty'];
   }
 
-  // Get the total price
+  // Obtener el precio total
   public function getTotalPrice()
   {
     return $this->cart['totalPrice'];
   }
 
-  // Calculate the number of items and total price
+  // Calcular el número de ítems y el precio total
   private function updateTotal()
   {
     $totalQty = 0;

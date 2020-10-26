@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
-use Json;
-use App\Cart;
-use Illuminate\Http\Request;
 use App\Models\{Order, Orderline};
+use Json;
+use Cart;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class HistoryController extends Controller
@@ -20,7 +20,7 @@ class HistoryController extends Controller
     $result = compact('orders');
     Json::dump($result);
 
-    return view('/user/history', $result);
+    return view('user.history', $result);
   }
   
   // Agregar datos del carro de compras a la base de datos
@@ -52,7 +52,7 @@ class HistoryController extends Controller
     Cart::empty();
 
     // Redireccionar a la página del historial de compras
-    $message = 'Gracias por su orden.<br>Su pedido se entregará lo antes posible.';
+    $message = 'Gracias por su pedido.<br>Su pedido se entregará lo antes posible.';
 
     session()->flash('success', $message);
 

@@ -21,9 +21,10 @@
           @foreach($order->orderlines as $orderline)
             <div class="d-flex">
               <div>
-                <img class="img-thumbnail cover width-80" src="/assets/vinyl.png"
+                <img class="img-thumbnail cover width-80" src="{{ asset('/assets/vinyl.png') }}"
                   data-src="{{ $orderline->cover }}"
-                  alt="{{ $orderline->title }}">
+                  alt="{{ $orderline->title }}"
+                  style="width: 100px">
                 <p class="text-center mt-2">€ {{ $orderline->total_price }}</p>
               </div>
               <p class="px-3">
@@ -33,19 +34,19 @@
             </div>
           @endforeach
         </div>
-        <div class="card-footer">
-          <b>Precio total</b>: € {{ $order->total_price }}
-        </div>
       </div>
     @endforeach
+    <div class="card-footer">
+      <b>Precio total</b>: € {{ $order->total_price }}
+    </div>
   @endif
 @endsection
 
 @section('script_after')
   <script>
     $(function () {
-        $('.cover').each(function () {
-          $(this).attr('src', $(this).data('src'));
+      $('.cover').each(function () {
+        $(this).attr('src', $(this).data('src'));
       });
     });
   </script>
