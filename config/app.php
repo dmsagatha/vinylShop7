@@ -235,5 +235,4 @@ return [
 	      'Mask' => Facades\App\Helpers\Mask::class,
         'Cart' => Facades\App\Helpers\Cart::class,
     ],
-
 ];
