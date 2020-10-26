@@ -234,10 +234,6 @@ return [
         'Json' => Facades\App\Helpers\Json::class,
 	      'Mask' => Facades\App\Helpers\Mask::class,
         'Cart' => Facades\App\Helpers\Cart::class,
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     ],
 
 ];
