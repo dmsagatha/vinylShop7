@@ -68,13 +68,13 @@ class Cart
     session()->forget('cart');
   }
 
-  // Obtener el carro compleo
+  // Obtener el carro de compras completo
   public function getCart()
   {
     return $this->cart;
   }
 
-  // Obtener todos los registro del carro de compras
+  // Obtener todos los regiostros del carro de compras
   public function getRecords()
   {
     return $this->cart['records'];

@@ -1,4 +1,3 @@
-
 @extends('layouts.template')
 
 @section('title', 'Su canasta')

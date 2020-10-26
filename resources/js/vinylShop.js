@@ -1,5 +1,4 @@
 let VinylShop = (function () {
-
   function hello() {
     console.log('El JavaScript de la Tienda de Vinilos funciona! 🙂');
   }
