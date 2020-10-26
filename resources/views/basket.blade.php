@@ -54,7 +54,7 @@
             <td></td>
             <td></td>
             <td>
-              <p><a href="/basket/empty" class="btn btn-sm btn-outline-danger">Su canasta esta vacía</a></p>
+              <p><a href="/basket/empty" class="btn btn-sm btn-outline-danger">Vaciar su carro de compras</a></p>
             </td>
             <td>
               <p><b>Precio total</b>: €&nbsp;{{ Cart::getTotalPrice() }}</p>
@@ -67,7 +67,7 @@
     </div>
   @endif
 
-  <a href="/basket/empty" class="btn btn-sm btn-outline-danger">Vaciar la canasta</a>
+  {{-- <a href="/basket/empty" class="btn btn-sm btn-outline-danger">Vaciar la canasta</a> --}}
 
   {{-- <h2 class="mt-5">¿Qué hay dentro de mi canasta?</h2>
   <hr>
