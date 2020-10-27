@@ -84,6 +84,10 @@ Route::group([
     Route::resource('genres', 'GenreController');
     Route::resource('records', 'RecordController');
     Route::get('orders', 'OrderController@index');
+    Route::prefix('demo')->group(function (){
+      Route::get('orderlines', 'OrderController@orderlines');
+      Route::get('users', 'OrderController@users');
+    });
   });
 
 /* Route::middleware(['auth'])->prefix('user')->group(function () {
